@@ -5,6 +5,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\BookLoansController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -35,6 +36,9 @@ Route::middleware('auth')->group(function () {
 
      // route mengelola book
     Route::resource('/books', BooksController::class);
+
+    // route mengelola bookloans
+    Route::resource('/bookloans', BookLoansController::class);
 });
 
 require __DIR__ . '/auth.php';

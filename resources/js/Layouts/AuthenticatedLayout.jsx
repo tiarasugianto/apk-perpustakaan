@@ -53,12 +53,23 @@ export default function AuthenticatedLayout({ header, children }) {
                                     </NavLink>
                                 }
 
-                                  <NavLink
-                                    href={route("books.index")}
-                                    active={route().current("books*")}>
-                                   
-                                    <span>Books</span>
-                                </NavLink>
+                                 {hasAnyPermission(['books index']) && (
+                                    <NavLink
+                                        href={route("books.index")}
+                                        active={route().current("books*")}
+                                    >
+                                        Books
+                                    </NavLink>
+                                )}
+
+                                {hasAnyPermission(['bookloans index']) && (
+                                    <NavLink
+                                        href={route("bookloans.index")}
+                                        active={route().current("bookloans*")}
+                                    >
+                                        Book Loans
+                                    </NavLink>
+                                )}
 
                             </div>
                         </div>
