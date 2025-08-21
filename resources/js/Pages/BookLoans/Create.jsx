@@ -117,6 +117,7 @@ export default function Create({ auth, books, users }) {
                                 <option value="">-- Pilih Status --</option>
                                 <option value="dipinjam">Dipinjam</option>
                                 <option value="dikembalikan">Dikembalikan</option>
+                                <option value="terlambat">Terlambat</option>
                             </select>
                             {errors.state && <span className="text-red-500 text-sm">{errors.state}</span>}
                         </div>
