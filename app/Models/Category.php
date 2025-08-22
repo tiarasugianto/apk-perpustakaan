@@ -16,4 +16,10 @@ class Category extends Model
     protected $fillable = [
         'category',
     ];
+
+    public function books()
+    {
+        return $this->belongsToMany(Book::class, 'book_category', 'category_id', 'book_id');
+    }
+
 }

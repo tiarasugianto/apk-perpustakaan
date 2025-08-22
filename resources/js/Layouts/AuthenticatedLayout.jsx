@@ -53,7 +53,7 @@ export default function AuthenticatedLayout({ header, children }) {
                                     </NavLink>
                                 }
 
-                                 {hasAnyPermission(['books index']) && (
+                                {hasAnyPermission(['books index']) && (
                                     <NavLink
                                         href={route("books.index")}
                                         active={route().current("books*")}
@@ -71,7 +71,7 @@ export default function AuthenticatedLayout({ header, children }) {
                                     </NavLink>
                                 )}
 
-                                 {hasAnyPermission(['categories index']) && (
+                                {hasAnyPermission(['categories index']) && (
                                     <NavLink
                                         href={route("categories.index")}
                                         active={route().current("categories*")}
@@ -79,6 +79,17 @@ export default function AuthenticatedLayout({ header, children }) {
                                         Categories
                                     </NavLink>
                                 )}
+
+                                {hasAnyPermission(['book_categories index']) && (
+                                    <NavLink
+                                        href={route("book_categories.index")}
+                                        active={route().current("book_categories*")}
+                                    >
+                                        Book Category
+                                    </NavLink>
+                                )}
+
+
 
                             </div>
                         </div>

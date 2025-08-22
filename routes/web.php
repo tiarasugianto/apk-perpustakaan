@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\BookLoansController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\BookCategoryController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -43,6 +44,9 @@ Route::middleware('auth')->group(function () {
 
     // route mengelola categories
     Route::resource('/categories', CategoriesController::class);
+
+     Route::resource('book_categories', BookCategoryController::class);
+
 });
 
 require __DIR__ . '/auth.php';
