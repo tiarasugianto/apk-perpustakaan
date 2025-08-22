@@ -71,6 +71,15 @@ export default function AuthenticatedLayout({ header, children }) {
                                     </NavLink>
                                 )}
 
+                                 {hasAnyPermission(['categories index']) && (
+                                    <NavLink
+                                        href={route("categories.index")}
+                                        active={route().current("categories*")}
+                                    >
+                                        Categories
+                                    </NavLink>
+                                )}
+
                             </div>
                         </div>
 
