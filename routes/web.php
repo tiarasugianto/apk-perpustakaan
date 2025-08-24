@@ -9,6 +9,7 @@ use App\Http\Controllers\BookLoansController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\BookCategoryController;
 use App\Http\Controllers\CollectionsController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -49,6 +50,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('/book_categories', BookCategoryController::class);
 
     Route::resource('/collections',CollectionsController::class);
+
+    Route::resource('/reviews',ReviewController::class);
 
 });
 

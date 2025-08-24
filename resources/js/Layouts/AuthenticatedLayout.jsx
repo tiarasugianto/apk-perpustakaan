@@ -98,6 +98,15 @@ export default function AuthenticatedLayout({ header, children }) {
                                     </NavLink>
                                 )}
 
+                                {hasAnyPermission(['reviews index']) && (
+                                    <NavLink
+                                        href={route("reviews.index")}
+                                        active={route().current("reviews*")}
+                                    >
+                                        Reviews
+                                    </NavLink>
+                                )}
+
 
 
                             </div>
