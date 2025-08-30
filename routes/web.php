@@ -14,6 +14,11 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+/*
+|--------------------------------------------------------------------------
+| Public Route
+|--------------------------------------------------------------------------
+*/
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -23,36 +28,49 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+/*
+|--------------------------------------------------------------------------
+| Authenticated Routes
+|--------------------------------------------------------------------------
+*/
+
+// Ganti dashboard → home
+Route::get('/home', function () {
+    return Inertia::render('Home');
+})->middleware(['auth', 'verified'])->name('home');
 
 Route::middleware('auth')->group(function () {
     // permissions route
-    Route::resource('/permissions', PermissionController::class);
+    Route::resource('permissions', PermissionController::class);
+
     // roles route
     Route::resource('roles', RoleController::class)->except('show');
+
     // users route
-    Route::resource('/users', UserController::class);
+    Route::resource('users', UserController::class);
+
+    // profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-     // route mengelola book
-    Route::resource('/books', BooksController::class);
+    // books
+    Route::resource('books', BooksController::class);
 
-    // route mengelola bookloans
-    Route::resource('/bookloans', BookLoansController::class);
+    // bookloans
+    Route::resource('bookloans', BookLoansController::class);
 
-    // route mengelola categories
-    Route::resource('/categories', CategoriesController::class);
+    // categories
+    Route::resource('categories', CategoriesController::class);
 
-    Route::resource('/book_categories', BookCategoryController::class);
+    // book_categories
+    Route::resource('book_categories', BookCategoryController::class);
 
-    Route::resource('/collections',CollectionsController::class);
+    // collections
+    Route::resource('collections', CollectionsController::class);
 
-    Route::resource('/reviews',ReviewController::class);
-
+    // reviews
+    Route::resource('reviews', ReviewController::class);
 });
 
 require __DIR__ . '/auth.php';
